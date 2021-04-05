@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 @Aspect
 public class Logger {
-    @AfterThrowing(pointcut = "execution(public * cg.wbd.grandemonstration.service.CustomerService.*(..))", throwing = "e")
+    @AfterThrowing(pointcut = "execution(public * cg.wbd.grandemonstration.service.impl.CustomerServiceImplWithSpringData.*(..))", throwing = "e")
     public void log(Exception e) {
         System.out.println("[CMS] co loi xay ra: " + e.getMessage());
     }

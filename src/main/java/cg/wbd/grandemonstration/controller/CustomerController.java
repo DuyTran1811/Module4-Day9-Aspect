@@ -39,15 +39,17 @@ public class CustomerController {
 
     @GetMapping("{id}")
     public ModelAndView showInformation(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("customers/info");
-        Customer customer = null;
+
         try {
+            ModelAndView modelAndView = new ModelAndView("customers/info");
+            Customer customer;
             customer = customerService.findOne(id);
+            modelAndView.addObject("customer", customer);
+            return modelAndView;
         } catch (Exception e) {
-            e.printStackTrace();
+            return new ModelAndView ("redirect:/customers");
         }
-        modelAndView.addObject("customer", customer);
-        return modelAndView;
+
     }
 
     @PostMapping
